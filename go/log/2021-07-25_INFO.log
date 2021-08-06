@@ -1,0 +1,2 @@
+time="07-25 20:22:50" level=info msg="mysql数据库连接成功！"
+time="07-25 20:22:50" level=error msg="SQL执行失败" 出错代码="INSERT INTO `s_user` (`i_user`,`i_pwd`,`i_type`,`i_state`,`i_time`,`i_uptime`) VALUES ('admin','e10adc3949ba59abbe56e057f20f883e',1,1,1627215770,0)" 耗时/ms=24.9168 错误位置="E:/code/go/src/RuanJianGuanLi v2/app/dao/user.go:17" 错误说明="Error 1062: Duplicate entry 'admin' for key 's_user.unx_user'"

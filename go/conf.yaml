@@ -1,0 +1,36 @@
+encrypt:
+  privatekey: |2
+
+    -----BEGIN RSA PRIVATE KEY-----
+    MIICXAIBAAKBgQCsB9tm3GKGxT81fAGucJB1Q9zeHOplHPgCxLbbaJ7hdpcwpU4/
+    hduBOfJdCJfSBB6FgdYfc74kUD06jwQ86flVIw5xm/irn6eQTj+UWW4SaSNAcSOe
+    Kik6VbGnD2XOwfNN8DhuZmtqjTAv+vTBZORiXibxZ6Yb/rLAOgA8vZwWKwIDAQAB
+    AoGAGo95/fcf1SwGFtVnEw45F4nbQ4XWYLcoyZCipNyRz0C2liGno6IgomKWe2u0
+    uQ2+wqEptKBzpnqnAXAMWPVM8+m0n9UXPteSKQx7IjsGRiKfoVKfr0Tp5kXtAgpd
+    HP6jNEZJ29ta5gjiYprM6BgqnbxDdk7m5Dp3AhKesIKAjSUCQQDF9rCe6SdQLEBI
+    VTsaFreNe49nRfdbeXIGJdTmxZ4AmxB8yRrYlNHvXr/9QxjF+Ltz9qYPnc+LVPen
+    Wtn0KWeHAkEA3nbhsju7ChiJoMkzNF+cg74o1BpMgiyyi1lFocwQh3PrsYsgq4JJ
+    Ot7/p0foEmKg7zFuVmU/jRpyMdqAF6L9PQJBAKf2b9LUtcNjWENG9XdkMOa9IGYa
+    Sg5101X+AU6v+yg+aNXHd5ytYBX9yV2j8T//k2SHsEvttKteMyXugqCUBL8CQC27
+    AmpBHRHWOXRz57K8dNAgJwRy44de6NT8ZPP9nug5TBoTH4QiJCuV67fXcD1XSP3i
+    i2v3JDk9VnwpDmvNdYECQDP1jBxCsY/Wg2Gelm5G9bDhq3aya1IYUEb9EZZskh0D
+    xPoX7G/gNdO+w8EfCpKHQTdhg4kLaCK0bzW2+1VWrIA=
+    -----END RSA PRIVATE KEY-----
+  publickey: |2
+
+    -----BEGIN PUBLIC KEY-----
+    MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCsB9tm3GKGxT81fAGucJB1Q9ze
+    HOplHPgCxLbbaJ7hdpcwpU4/hduBOfJdCJfSBB6FgdYfc74kUD06jwQ86flVIw5x
+    m/irn6eQTj+UWW4SaSNAcSOeKik6VbGnD2XOwfNN8DhuZmtqjTAv+vTBZORiXibx
+    Z6Yb/rLAOgA8vZwWKwIDAQAB
+    -----END PUBLIC KEY-----
+  salt: "529887136"
+ismysql: 1
+mysql:
+  host: 127.0.0.1:3306
+  maxconn: 20
+  maxopen: 20
+  name: ruan_jian_guan_li
+  pwd: Aa123456
+  user: root
+port: 52777

@@ -1,0 +1,686 @@
+basePath: /v1
+host: 127.0.0.1:52777
+info:
+  contact: {}
+  description: |
+    统一编码格式-UTF8
+  license:
+    name: 易轩软件 http://www.99v66.com
+    url: http://www.99v66.com
+  title: 验证系统 API
+  version: "1.0"
+paths:
+  /apply/add:
+    post:
+      description: 详细描述
+      parameters:
+      - description: 登录返回的token
+        in: query
+        name: token
+        required: true
+        type: string
+      - description: 应用名称
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: 收费模式 1=扣时 2=扣点
+        in: formData
+        name: mold
+        required: true
+        type: string
+      - description: 绑定模式 1=不绑定 2=绑定机器码 3=绑定IP
+        in: formData
+        name: bin
+        required: true
+        type: string
+      - description: 登录模式 1=免费 2=单点登录 3=多点登录
+        in: formData
+        name: login
+        required: true
+        type: string
+      - description: 远程数据
+        in: formData
+        name: msg
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"添加成功"}'
+          schema:
+            type: string
+      summary: 添加应用
+      tags:
+      - 应用管理
+  /apply/edit:
+    post:
+      parameters:
+      - description: 登录返回的token
+        in: query
+        name: token
+        required: true
+        type: string
+      - description: 应用ID
+        in: formData
+        name: aid
+        required: true
+        type: string
+      - description: 应用名称
+        in: formData
+        name: name
+        type: string
+      - description: 收费模式 1=扣时 2=扣点
+        in: formData
+        name: mold
+        type: string
+      - description: 绑定模式 1=不绑定 2=绑定机器码 3=绑定IP
+        in: formData
+        name: bin
+        type: string
+      - description: 登录模式 1=免费 2=单点登录 3=多点登录
+        in: formData
+        name: login
+        type: string
+      - description: 远程数据
+        in: formData
+        name: msg
+        type: string
+      - description: 1=可用 2=不可用
+        in: formData
+        name: state
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"修改成功"}'
+          schema:
+            type: string
+      summary: 编辑应用信息
+      tags:
+      - 应用管理
+  /apply/get:
+    post:
+      description: 数据已加密处理
+      parameters:
+      - description: 应用ID
+        in: formData
+        name: aid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"查询成功","data":{"aid":1002,"name":"QQ注册1","mold":2,"login":1,"bin":3,"msg":"关键参数2333","state":2,"time":1625000360}}'
+          schema:
+            type: string
+      summary: 获取应用信息[数据已加密]
+      tags:
+      - 应用管理
+  /apply/getAll:
+    get:
+      description: 详细描述
+      parameters:
+      - description: 登录返回的token
+        in: query
+        name: token
+        required: true
+        type: string
+      - description: 页数
+        in: query
+        name: page
+        required: true
+        type: string
+      - description: 获取的数量
+        in: query
+        name: limit
+        required: true
+        type: string
+      - description: 应用ID
+        in: query
+        name: aid
+        required: true
+        type: string
+      - description: 应用状态1=可用 2=不可用
+        in: query
+        name: state
+        required: true
+        type: string
+      - description: 应用名称
+        in: query
+        name: name
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"查询成功","count":2,"data":[{"aid":1001,"name":"JD注册","mold":1,"login":3,"bin":2,"msg":"关键参数","state":1,"time":1625000292}]}'
+          schema:
+            type: string
+      summary: 获取应用列表
+      tags:
+      - 应用管理
+  /key/cread:
+    post:
+      description: 详细描述
+      parameters:
+      - description: 登录返回的token
+        in: query
+        name: token
+        required: true
+        type: string
+      - description: 生成数量
+        in: formData
+        name: num
+        required: true
+        type: string
+      - description: 收费模式 1=扣时 2=扣点
+        in: formData
+        name: mold
+        required: true
+        type: string
+      - description: 点数
+        in: formData
+        name: point
+        required: true
+        type: string
+      - description: 小时数
+        in: formData
+        name: day
+        required: true
+        type: string
+      - description: 应用ID
+        in: formData
+        name: aid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"生成成功","data":[{"kid":2001,"cdk":"acff954d-9160-4cc3-96c3-e9284543a68b","mold":1,"point":100,"day":24,"uid":0,"aid":1002,"cread_time":1625006496,"use_time":0,"state":1}]}'
+          schema:
+            type: string
+      summary: 生成卡密
+      tags:
+      - 卡密管理
+  /key/edit:
+    post:
+      parameters:
+      - description: 登录返回的token
+        in: query
+        name: token
+        required: true
+        type: string
+      - description: 卡密ID
+        in: formData
+        name: kid
+        required: true
+        type: string
+      - description: 1=可用 2=不可用
+        in: formData
+        name: state
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"修改成功"}}'
+          schema:
+            type: string
+      summary: 编辑卡密信息
+      tags:
+      - 卡密管理
+  /key/getAll:
+    get:
+      description: 详细描述
+      parameters:
+      - description: 登录返回的token
+        in: query
+        name: token
+        required: true
+        type: string
+      - description: 页数
+        in: query
+        name: page
+        required: true
+        type: string
+      - description: 获取的数量
+        in: query
+        name: limit
+        required: true
+        type: string
+      - description: 应用ID
+        in: query
+        name: aid
+        type: string
+      - description: 应用状态1=可用 2=不可用
+        in: query
+        name: state
+        type: string
+      - description: 卡密
+        in: query
+        name: cdk
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"查询成功","count":1004,"data":[{"kid":1005,"cdk":"3c262067-384b-4ba5-80ab-14ca31cbadf5","mold":1,"point":100,"day":24,"uid":0,"aid":1002,"cread_time":1625006471,"use_time":0,"state":1}]}'
+          schema:
+            type: string
+      summary: 获取卡密列表
+      tags:
+      - 卡密管理
+  /power/charge:
+    post:
+      description: 详细描述
+      parameters:
+      - description: 账号
+        in: formData
+        name: user
+        required: true
+        type: string
+      - description: 卡密
+        in: formData
+        name: cdk
+        required: true
+        type: string
+      - description: 应用ID
+        in: formData
+        name: aid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"充值成功"}'
+          schema:
+            type: string
+      summary: 充值
+      tags:
+      - 用户操作
+  /power/check:
+    post:
+      description: 数据已加密
+      parameters:
+      - description: 登录返回的token
+        in: query
+        name: token
+        required: true
+        type: string
+      - description: 机器码
+        in: formData
+        name: dev
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"效验成功","data":{"a":{"aid":3,"name":"JD注册","mold":2,"login":3,"bin":1,"msg":"关键参数222","state":1,"time":1625069421},"p":{"pid":3,"uid":1,"aid":3,"kid":0,"day":1625183400,"point":90,"ip":"192.168.1.7","code":"ca5df0fdae677510f937c256a7f5","state":1,"time":1625084599}}}'
+          schema:
+            type: string
+      summary: 心跳[数据已加密]
+      tags:
+      - 验证相关
+  /power/edit:
+    post:
+      parameters:
+      - description: 登录返回的token
+        in: query
+        name: token
+        required: true
+        type: string
+      - description: 用户ID
+        in: formData
+        name: uid
+        required: true
+        type: string
+      - description: 应用ID
+        in: formData
+        name: aid
+        required: true
+        type: string
+      - description: 1=可用 2=不可用
+        in: formData
+        name: state
+        type: string
+      - description: 到期时间的十位时间戳
+        in: formData
+        name: day
+        type: string
+      - description: 剩余点数
+        in: formData
+        name: point
+        type: string
+      - description: 绑定IP
+        in: formData
+        name: ip
+        type: string
+      - description: 绑定机器
+        in: formData
+        name: code
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"修改成功"}'
+          schema:
+            type: string
+      summary: 编辑权限信息
+      tags:
+      - 权限管理
+  /power/getAll:
+    get:
+      description: 详细描述
+      parameters:
+      - description: 登录返回的token
+        in: query
+        name: token
+        required: true
+        type: string
+      - description: 页数
+        in: query
+        name: page
+        required: true
+        type: string
+      - description: 获取的数量
+        in: query
+        name: limit
+        required: true
+        type: string
+      - description: 应用ID
+        in: query
+        name: aid
+        required: true
+        type: string
+      - description: 状态1=可用 2=不可用
+        in: query
+        name: state
+        required: true
+        type: string
+      - description: 用户ID
+        in: query
+        name: uid
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"查询成功","count":1,"data":[{"uid":1001,"aid":1002,"kid":0,"day":1625191303,"point":200,"ip":"","code":"","state":1,"time":1625018503}]}'
+          schema:
+            type: string
+      summary: 获取权限列表
+      tags:
+      - 权限管理
+  /power/login:
+    post:
+      description: 数据已加密
+      parameters:
+      - description: 账号
+        in: formData
+        name: user
+        required: true
+        type: string
+      - description: 密码
+        in: formData
+        name: pwd
+        required: true
+        type: string
+      - description: 应用ID
+        in: formData
+        name: aid
+        required: true
+        type: string
+      - description: 机器码
+        in: formData
+        name: dev
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"登陆成功","data":{"token":"111..."}}'
+          schema:
+            type: string
+      summary: 用户登录[数据已加密]
+      tags:
+      - 验证相关
+  /power/sub:
+    post:
+      description: 数据已加密
+      parameters:
+      - description: 登录返回的token
+        in: query
+        name: token
+        required: true
+        type: string
+      - description: 扣除点数不可为负
+        in: formData
+        name: point
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"扣除成功"}'
+          schema:
+            type: string
+      summary: 扣点[数据已加密]
+      tags:
+      - 验证相关
+  /user/edit:
+    post:
+      parameters:
+      - description: 登录返回的token
+        in: query
+        name: token
+        required: true
+        type: string
+      - description: 用户ID
+        in: formData
+        name: uid
+        type: string
+      - description: 用户状态1=可用 2=不可用
+        in: formData
+        name: state
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"修改成功"}'
+          schema:
+            type: string
+      summary: 编辑用户信息
+      tags:
+      - 用户管理
+  /user/getAll:
+    get:
+      description: 详细描述
+      parameters:
+      - description: 登录返回的token
+        in: query
+        name: token
+        required: true
+        type: string
+      - description: 页数
+        in: query
+        name: page
+        required: true
+        type: string
+      - description: 获取的数量
+        in: query
+        name: limit
+        required: true
+        type: string
+      - description: 用户ID
+        in: query
+        name: uid
+        type: string
+      - description: 用户状态1=可用 2=不可用
+        in: query
+        name: state
+        type: string
+      - description: 用户名
+        in: query
+        name: user
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"查询成功","count":2,"data":[{"uid":1001,"user":"99v66","state":2,"time":1624982434},{"uid":1002,"user":"529887136","state":1,"time":1624983043}]}'
+          schema:
+            type: string
+      summary: 获取用户列表
+      tags:
+      - 用户管理
+  /user/getInfo:
+    get:
+      description: 详细描述
+      parameters:
+      - description: 登录返回的token
+        in: query
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"更新成功"}'
+          schema:
+            type: string
+      summary: 获取个人信息
+      tags:
+      - 用户操作
+  /user/login:
+    post:
+      description: 详细描述
+      parameters:
+      - description: 账号
+        in: formData
+        name: user
+        required: true
+        type: string
+      - description: 密码
+        in: formData
+        name: pwd
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"登录成功","data":"eyJ1aWQiOjEwMDEsImFpZCI6MCwidGltZSI6MTYyNDk4MjQ5OSwicG93ZXIiOjIsInRpbWVfdXBkYXRhIjowLCJ0aW1lX0xvZ2luIjowLCJzaWduIjoiNWQ3OGYyYTE4OGY1Y2NhNjQ2NDdhYzI4N2MyMmVlMzIifQ=="}'
+          schema:
+            type: string
+      summary: 登录
+      tags:
+      - 用户操作
+  /user/newPwd:
+    post:
+      description: 详细描述
+      parameters:
+      - description: 登录返回的token
+        in: query
+        name: token
+        required: true
+        type: string
+      - description: 旧密码
+        in: formData
+        name: oldPwd
+        required: true
+        type: string
+      - description: 新密码
+        in: formData
+        name: newPwd
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"修改成功,请重新登录"}'
+          schema:
+            type: string
+      summary: 修改密码
+      tags:
+      - 用户操作
+  /user/out:
+    get:
+      description: 将造成所有软件token失效,暂停接口
+      parameters:
+      - description: 登录返回的token
+        in: query
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"修改成功,请重新登录"}'
+          schema:
+            type: string
+      summary: 退出
+      tags:
+      - 用户操作
+  /user/reg:
+    post:
+      description: 详细描述
+      parameters:
+      - description: 账号
+        in: formData
+        name: user
+        required: true
+        type: string
+      - description: 密码
+        in: formData
+        name: pwd
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"注册成功,请前往登录"}'
+          schema:
+            type: string
+      summary: 注册
+      tags:
+      - 用户操作
+  /user/upInfo:
+    post:
+      description: 详细描述
+      parameters:
+      - description: 登录返回的token
+        in: query
+        name: token
+        required: true
+        type: string
+      - description: 更新内容
+        in: formData
+        name: msg
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"msg":"更新成功"}'
+          schema:
+            type: string
+      summary: 更新个人信息
+      tags:
+      - 用户操作
+swagger: "2.0"
