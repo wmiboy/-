@@ -31,6 +31,6 @@ mysql:
   maxconn: 20
   maxopen: 20
   name: ruan_jian_guan_li
-  pwd: Aa123456
+  pwd: "123654"
   user: root
 port: 52777
