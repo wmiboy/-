@@ -33,6 +33,6 @@ func main() {
 func 创建管理员账户() {
 	err := dao.User{}.Cread("admin", "e10adc3949ba59abbe56e057f20f883e")
 	if err != nil && !strings.Contains(err.Error(),"Duplicate entry") {
-		glog.GetLog().Fatal("管理员账户创建失败")
+		glog.GetLog().INFO("管理员账户创建失败")
 	}
 }
